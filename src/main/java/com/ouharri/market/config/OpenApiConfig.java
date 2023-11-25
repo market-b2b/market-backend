@@ -10,6 +10,9 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
 
+/**
+ * Configuration class for OpenAPI documentation settings.
+ */
 @OpenAPIDefinition(
         info = @Info(
                 contact = @Contact(
