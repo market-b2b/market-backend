@@ -18,6 +18,9 @@ import java.util.Arrays;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
+/**
+ * Configuration class for Spring Security settings.
+ */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -42,6 +45,13 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
 
+    /**
+     * Configures security settings for the application, including authentication, authorization, and JWT handling.
+     *
+     * @param http HttpSecurity object to configure security settings
+     * @return SecurityFilterChain object representing the configured security filter chain
+     * @throws Exception if an error occurs during the configuration process
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         AntPathRequestMatcher[] requestMatchers = Arrays.stream(WHITE_LIST_URL)
