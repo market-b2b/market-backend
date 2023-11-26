@@ -14,7 +14,8 @@ import java.util.stream.Collectors;
 public enum Role {
 
   USER(Collections.emptySet()),
-  ADMIN(
+
+  ADMINISTRATOR(
           Set.of(
                   Permission.ADMIN_READ,
                   Permission.ADMIN_UPDATE,
@@ -33,6 +34,22 @@ public enum Role {
                   Permission.MANAGER_DELETE,
                   Permission.MANAGER_CREATE
           )
+  ),
+  SUPER_ADMINISTRATOR(
+            Set.of(
+                    Permission.ADMIN_READ,
+                    Permission.ADMIN_UPDATE,
+                    Permission.ADMIN_DELETE,
+                    Permission.ADMIN_CREATE,
+                    Permission.MANAGER_READ,
+                    Permission.MANAGER_UPDATE,
+                    Permission.MANAGER_DELETE,
+                    Permission.MANAGER_CREATE,
+                    Permission.SUPER_ADMINISTRATOR_READ,
+                    Permission.SUPER_ADMINISTRATOR_UPDATE,
+                    Permission.SUPER_ADMINISTRATOR_DELETE,
+                    Permission.SUPER_ADMINISTRATOR_CREATE
+            )
   );
 
   private final Set<Permission> permissions;
