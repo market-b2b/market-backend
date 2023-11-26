@@ -41,7 +41,7 @@ public class JwtService {
   }
 
   /**
-   * Extracts a specific claim from a JWT token using the provided claims resolver.
+   * Extracts a specific claim from a JWT token using the provided claims' resolver.
    *
    * @param token           JWT token
    * @param claimsResolver  Function to resolve the desired claim from the token's claims
@@ -51,6 +51,10 @@ public class JwtService {
   public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
     final Claims claims = extractAllClaims(token);
     return claimsResolver.apply(claims);
+  }
+
+  public String generateToken(UserDetails userDetails) {
+    return generateToken(new HashMap<>(), userDetails);
   }
 
   /**
@@ -101,7 +105,7 @@ public class JwtService {
     return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
   }
 
-  private boolean isTokenExpired(String token) {
+  public boolean isTokenExpired(String token) {
     return extractExpiration(token).before(new Date());
   }
 
